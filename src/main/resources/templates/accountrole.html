@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div th:replace="layout/template-layout :: headerAsset"></div>
+
+<!--Navbar-->
+<nav th:replace="layout/template-layout :: navbar"></nav>
+
+<!--Content-->
+
+<div class="container">
+    <div class="row ">
+        <div class="col-12">
+            <div class="card mt-4">
+                <div class="card-header d-flex align-items-center">
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <h5>Account Role Table</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <td>Account Role ID</td>
+                                <td>Role</td>
+                                <td>Employee</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="accountrole : ${accountroles}">
+                                <td th:text="${accountrole.id}"></td>
+                                <td th:text="${accountrole.role.name}"></td>
+                                <td th:text="${accountrole.account}"></td>
+                                <td>                                
+                                    <a th:href="@{/accountrole/{id}/delete(id=${accountrole.id})}" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout/template-layout :: asset"></div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div th:replace="layout/template-layout :: headerAsset"></div>
+
+<!--Navbar-->
+<nav th:replace="layout/template-layout :: navbar"></nav>
+
+<!--Content-->
+
+<div class="container">
+    <div class="row ">
+        <div class="col-12">
+            <div class="card mt-4">
+                <div class="card-header d-flex align-items-center">
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <h5>Employee Table</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <td>Employee ID</td>
+                                <td>First Name</td>
+                                <td>Last Name</td>
+                                <td>Birth Date</td>
+                                <td>Gender</td>
+                                <td>Address</td>
+                                <td>Phone</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="employee : ${employees}">
+                                <td th:text="${employee.id}"></td>
+                                <td th:text="${employee.firstName}"></td>
+                                <td th:text="${employee.lastName}"></td>
+                                <td th:text="${employee.birthDate}"></td>
+                                <td th:text="${employee.gender}"></td>
+                                <td th:text="${employee.address}"></td>
+                                <td th:text="${employee.phone}"></td>
+                                <td>                                
+                                    <a th:href="@{/employee/{id}/update(id=${employee.id})}" class="btn btn-sm btn-warning">Update</a>
+                                    <a th:href="@{/employee/{id}/delete(id=${employee.id})}" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout/template-layout :: asset"></div>
